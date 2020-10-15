@@ -1,0 +1,9 @@
+*.a
+*.o
+*.d
+project_make.config
+sysroot
+sysroot/*
+docs
+docs/*
+*.elf
