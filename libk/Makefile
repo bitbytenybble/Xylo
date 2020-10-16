@@ -3,8 +3,8 @@ include ../project_make.config
 # $(SYSROOT_PREFIX) holds the full path to the outtermost folder in the project
 
 TARGET_LIBS = libk.a
-CC       = $(HOST)gcc#Call architecture dependent compiler executable
-AR       = $(HOST)ar#Call architecture dependent archiver executable
+CC       = $(HOST)-gcc#Call architecture dependent compiler executable
+AR       = $(HOST)-ar#Call architecture dependent archiver executable
 AR_FLAGS = rcs
 
 

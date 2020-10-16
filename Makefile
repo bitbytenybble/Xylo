@@ -1,7 +1,8 @@
 include project_make.config
 # Test comment
 
-CC      = $(HOST)gcc
+CC      = $(HOST)-gcc
+KERNEL_NAME = Xylo.elf
 SYSROOT = $(SYSROOT_PREFIX)/sysroot
 SYSLIBS = /usr/include
 CFLAGS  =  -O2 -ffreestanding -g -Wall -Wextra -Werror \
@@ -11,7 +12,7 @@ LDFLAGS = -T $(ARCH)/linker.ld
 TARGET_FOLDERS = kernel libk
 
 # todo build based on architecture
-ARCH    = ./arch/i386
+ARCH    = ./arch/$(TARGET_ARCH)
 KER_SRC = ./src
 HEADERS = ./include
 OBJECTS = start.o kernel.o terminal.o

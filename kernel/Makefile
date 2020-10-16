@@ -1,10 +1,11 @@
 include ../project_make.config
 
-# HOST holds path tp cross-compiler
+# HOST holds path of cross-compiler
 TARGET_DEST = ..# PLACE KERNEL IN OUTTERMOST FOLDER OF PROJECT
+KERNEL_NAME = Xylo.elf
 TARGET      = $(TARGET_DEST)/$(KERNEL_NAME)# TARGET PATH
 
-CC          = $(HOST)gcc
+CC          = $(HOST)-gcc
 SYSROOT     = $(SYSROOT_PREFIX)/sysroot
 SYS_HEADERS = /usr/include
 SYSLIBS     = $(SYSROOT)/usr/lib

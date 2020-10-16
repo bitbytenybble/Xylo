@@ -37,7 +37,7 @@ const SegmentDescriptor GDT[] = {
 // more information than just the base and limit fields.
 // The two most relevant fields for us are the Type field and the Descriptor Privilege Level (DPL) field.
 void initGDT(){
-	
-	printf(""%p", (void*)&(GDT[0]));
+
+	//printf(""%p", (void*)&(GDT[0]));
 	asm("hlt");
 }
