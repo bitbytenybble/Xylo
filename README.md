@@ -8,7 +8,7 @@ An operating system that runs on the IA-32 architecture.
 
 * `libk` - Xylo kernel-specific implementation of C standard library
 
-* `Makefile`- Operating system Makefile that creates the binary executable elf file
+* `Makefile`- Makefile build script that creates the binary executable elf file to run Xylo
 
 
 ## Supported architectures
@@ -20,10 +20,10 @@ An operating system that runs on the IA-32 architecture.
 
 Create a file in the Xylo top-level directory named `project_make.config`.
 
-Add the code below to `project_make.config` (Assuming a cross-compiler from host to target has been created).
+Add the code below to `project_make.config` (Assuming a host-to-target cross-compiler has been created).
 
 
 
-`HOST = ~/opt/cross/bin/i686-elf # Or path prefix to compiler, excluding the compiler name. E.g gcc, g++, etc)
-SYSROOT_PREFIX = PATH_TO_XYLO_DIRECTORY
-TARGET_ARCH = SUPPORTED_ARCHITECTURE`
+`HOST = ~/opt/cross/bin/i686-elf # Or path prefix to compiler, EXCLUDING the compiler name. E.g gcc, g++, etc)`
+`SYSROOT_PREFIX = PATH_TO_XYLO_DIRECTORY`
+`TARGET_ARCH = SUPPORTED_ARCHITECTURE`
