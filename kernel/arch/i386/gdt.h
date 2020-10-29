@@ -2,6 +2,10 @@
 #define GDT_H
 #include <stdint.h>
 
+// GDT base address
+#define GDT_BASE_ADDRESS    0x00000800
+
+
 // ########################### FLAGS ###########################
 
 // GRANULARITY
@@ -163,6 +167,6 @@ typedef struct {
 
 // Loads the GDT's address into the GDTR
 void initGDT();
-
+extern void load_gdt();
 
 #endif

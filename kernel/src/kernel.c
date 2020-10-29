@@ -13,7 +13,6 @@
 
 
 void kernel_main() {
-
 	initializeTerminal();
 
 

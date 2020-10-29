@@ -29,7 +29,7 @@ CRT_DIR   := $(dir $(CRT_BEGIN))# Extract directory names
 CRT_OBJS   = crtbegin.o crtend.o
 
 
-OBJECTS = start.o terminal.o gdt.o crti.o crtn.o $(CRT_OBJS)
+OBJECTS = start.o terminal.o gdt.o load_gdt.o crti.o crtn.o $(CRT_OBJS)
 
 
 
@@ -69,6 +69,10 @@ terminal.o: $(ARCH)/terminal.c
 
 
 gdt.o: $(ARCH)/gdt.c $(ARCH)/gdt.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+
+load_gdt.o: $(ARCH)/load_gdt.s
 	$(CC) $(CFLAGS) -c $< -o $@
 
 

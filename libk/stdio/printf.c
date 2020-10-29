@@ -73,10 +73,23 @@ static int vprintf(const char* formatString, va_list args) {
 
 				case 'p':
 					puts("0x");
-					void *v = va_arg(args, void*);
-					unsigned long ul = (unsigned long) v; //TODO handle 32-bit vs 64-bit addresses
-					str = intToString(ul, 16);
-					puts(str);
+					// Keep newly defined variables in local scope
+					{
+						void *v = va_arg(args, void*);
+						unsigned long ul = (unsigned long) v; //TODO handle 32-bit vs 64-bit addresses
+						str = intToString(ul, 16);
+						puts(str);
+					}
+					break;
+
+				case 'x':
+					// Keep newly defined variables in local scope
+					{
+						void *v = va_arg(args, void*);
+						unsigned long ul = (unsigned long) v; //TODO handle 32-bit vs 64-bit addresses
+						str = intToString(ul, 16);
+						puts(str);
+					}
 					break;
 
 				default:  // TODO implement print "not implemented or incorrect format"
