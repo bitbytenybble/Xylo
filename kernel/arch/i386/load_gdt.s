@@ -28,9 +28,9 @@ gdtr_val:
 #    1) Size of GDT - lower 16 bits. I.E (2^16)
 #	 2) Upper 32-bits holds memory location of table
 
-
 refresh_segments:
 	mov eax, 0x10             # Points to the new kernel data descriptor
+
 	mov ds, ax
 	mov es, ax
 	mov fs, ax
@@ -38,15 +38,15 @@ refresh_segments:
 	mov ss, ax
 	ret
 
-
+	#mov ax, ds                # load base address of data segment into lower 16 bits of EAX (LOWER 16 = AX)
+	#shl eax, 4                # multiply segment address by 16
+	#add eax, gdt              # Adds gdt location as offset in linear address = 16*segment + offset
 
 load_gdt:
 	xor eax, eax		      # clear eax
-	mov ax, ds                # load base address of data segment into lower 16 bits of EAX (LOWER 16 = AX)
-	shl eax, 4                # multiply segment address by 16
-	add eax, gdt              # Adds gdt location as offset in linear address = 16*segment + offset
+	add eax, [esp+4]		  # Get frst argument (32-bit int)
 	mov [gdtr_val + 2], eax   # Set 32-bit address to last 4 bytes of 6 bit array
-	mov eax, GDT_SIZE_BYTES   # Get the 16-bit size of the GDT array
+	mov ax, [esp+8]           # Get second argument (16-bit int)
 	mov [gdtr_val], ax		  # Move the size to the first 16 bits of the gdtr_value array to be loaded into the gdtr
 	lgdt [gdtr_val]			  # Load the the gdtr_value array into the actual gdtr.
 

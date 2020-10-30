@@ -5,11 +5,8 @@
 
 
 
-// TODO FILL OUT ABOVE 3 DESCRIPTORS AND ENTER ALL 5 INTO ARRAY BELOW
 
-
-
-const SegmentDescriptor GDT[] = {
+const SegmentDescriptor gdt[] = {
 	{.limit = 0, .flags_and_lim_end = 0, .base_1_2 = 0, .base_3=0, .base_4=0, .access = 0},
 
 
@@ -37,7 +34,8 @@ const SegmentDescriptor GDT[] = {
 // more information than just the base and limit fields.
 // The two most relevant fields for us are the Type field and the Descriptor Privilege Level (DPL) field.
 void initGDT(){
-
-	//printf(""%p", (void*)&(GDT[0]));
-	asm("hlt");
+	// Passes pointer to array, and size-1 of array to be loaded into the 6-byte GDTR
+	// The size is passed in as size-1 because it represents the final index position/offset from the start of the
+	// table. E.g if the GDT is 48 bytes, the final address will be 47 (size-1) from the starting address (position 0)
+	load_gdt(&gdt, sizeof(gdt)-1);
 }

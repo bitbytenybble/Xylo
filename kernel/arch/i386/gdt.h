@@ -2,9 +2,6 @@
 #define GDT_H
 #include <stdint.h>
 
-// GDT base address
-#define GDT_BASE_ADDRESS    0x00000800
-
 
 // ########################### FLAGS ###########################
 
@@ -98,7 +95,7 @@
 // Kernel code access byte
 #define GDT_KERNEL_CODE_SEGMENT_ACCESS (SEGMENT_VALID        | \
 										DPL_KERNEL_MODE      | \
-										CODE_OR_DATA_SEGMENT       | \
+										CODE_OR_DATA_SEGMENT | \
 										CODE_SEGMENT         | \
 										CONFORMS_TO_DPL_RING | \
 										EXECUTE_AND_READ     | \
