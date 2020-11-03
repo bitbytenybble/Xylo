@@ -1,7 +1,7 @@
 #ifndef GDT_H
 #define GDT_H
 #include <stdint.h>
-
+#include "tss.h"
 
 // ########################### FLAGS ###########################
 
@@ -162,8 +162,10 @@ typedef struct {
 
 
 
-// Loads the GDT's address into the GDTR
+// Calls the setup method for the GDT
 void initGDT();
+
+// Loads the GDT into the GDTR
 extern void load_gdt();
 
 #endif
